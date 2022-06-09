@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F214E75285233700095FAAF /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F214E74285233700095FAAF /* VC.swift */; };
 		3F382DE6284F867E00641813 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F382DE5284F867E00641813 /* AppDelegate.swift */; };
 		3F382DE8284F867E00641813 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F382DE7284F867E00641813 /* SceneDelegate.swift */; };
 		3F382DEA284F867E00641813 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F382DE9284F867E00641813 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F214E74285233700095FAAF /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		3F382DE2284F867E00641813 /* Product_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Product_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F382DE5284F867E00641813 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F382DE7284F867E00641813 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				3F382DE5284F867E00641813 /* AppDelegate.swift */,
 				3F382DE7284F867E00641813 /* SceneDelegate.swift */,
 				3F382DE9284F867E00641813 /* ViewController.swift */,
+				3F214E74285233700095FAAF /* VC.swift */,
 				3F382DEB284F867F00641813 /* Main.storyboard */,
 				3F382DEE284F868000641813 /* Assets.xcassets */,
 				3F382DF0284F868000641813 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F214E75285233700095FAAF /* VC.swift in Sources */,
 				3F382DEA284F867E00641813 /* ViewController.swift in Sources */,
 				3F382DE6284F867E00641813 /* AppDelegate.swift in Sources */,
 				3F382DE8284F867E00641813 /* SceneDelegate.swift in Sources */,
