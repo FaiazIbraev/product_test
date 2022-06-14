@@ -18,6 +18,7 @@ class VC: UIViewController {
     var operation: String = ""
     var secondNumber: String = ""
     var result: Int = 0
+    var isResultFound: Bool = false
     
     @IBOutlet weak var Current_text_field: UITextField!
     
@@ -36,6 +37,7 @@ class VC: UIViewController {
     
     
     @IBAction func Operations(_ sender: UIButton) {
+        
         switch sender.tag{
         case 10:
             print("/")
@@ -56,9 +58,12 @@ class VC: UIViewController {
     
     @IBAction func numberActions(_ sender: UIButton) {
         
+        if firstNumber != "" && secondNumber != "" && isResultFound{
+            reset()
+        }
+        
         switch sender.tag{
         case 0:
-            print("0")
             if operation.isEmpty{
                 firstNumber += "0"
                 Current_text_field.text = firstNumber
@@ -68,7 +73,6 @@ class VC: UIViewController {
             }
             
         case 1:
-            print("1")
             if operation.isEmpty{
                 firstNumber += "1"
                 Current_text_field.text = firstNumber
@@ -77,7 +81,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 2:
-            print("2")
             if operation.isEmpty{
                 firstNumber += "2"
                 Current_text_field.text = firstNumber
@@ -86,7 +89,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 3:
-            print("3")
             if operation.isEmpty{
                 firstNumber += "3"
                 Current_text_field.text = firstNumber
@@ -95,7 +97,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 4:
-            print("4")
             if operation.isEmpty{
                 firstNumber += "4"
                 Current_text_field.text = firstNumber
@@ -104,7 +105,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 5:
-            print("5")
             if operation.isEmpty{
                 firstNumber += "5"
                 Current_text_field.text = firstNumber
@@ -113,7 +113,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 6:
-            print("6")
             if operation.isEmpty{
                 firstNumber += "6"
                 Current_text_field.text = firstNumber
@@ -122,7 +121,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 7:
-            print("7")
             if operation.isEmpty{
                 firstNumber += "7"
                 Current_text_field.text = firstNumber
@@ -131,7 +129,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 8:
-            print("8")
             if operation.isEmpty{
                 firstNumber += "8"
                 Current_text_field.text = firstNumber
@@ -140,7 +137,6 @@ class VC: UIViewController {
                 Current_text_field.text = secondNumber
             }
         case 9:
-            print("9")
             if operation.isEmpty{
                 firstNumber += "9"
                 Current_text_field.text = firstNumber
@@ -163,39 +159,89 @@ class VC: UIViewController {
         switch operation{
         case "+":
             result = first + second
+            firstNumber = "\(result)"
         case "-":
             result = first - second
+            firstNumber = "\(result)"
         case "/":
-            result = first / second
+                result = first / second
+                firstNumber = "\(result)"
         case "*":
             result = first * second
+            firstNumber = "\(result)"
         default:
             print("There is no such number and operations")
         }
-        Current_text_field.text = "\(result)"
-        reset()
         
-        func reset(){
-        firstNumber = ""
-        secondNumber = ""
-        result = 0
-        operation = ""
+        isResultFound = true
+        
+        Current_text_field.text = "\(result)"
+    }
+    
+    
+    @IBAction func Reverse_sign(_ sender: UIButton) {
+        if isResultFound{
+            if result > 0{
+                result = -result
+            } else {
+                result = abs(result)
+            }
+            Current_text_field.text = "\(result)"
+        } else if !isResultFound && !operation.isEmpty{
+            if var second = Int(secondNumber){
+                if second > 0{
+                    second = -second
+                    secondNumber = "\(second)"
+                } else{
+                    second = abs(second)
+                    secondNumber = "\(second)"
+                }
+                Current_text_field.text = secondNumber
+            }
+        }else{
+            if var first = Int(firstNumber){
+                if first > 0{
+                    first = -first
+                    firstNumber = "\(first)"
+                } else{
+                    first = abs(first)
+                    firstNumber = "\(first)"
+                }
+                Current_text_field.text = firstNumber
         }
     }
-    
-    
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    func reset(){
+    firstNumber = ""
+    secondNumber = ""
+    result = 0
+    operation = ""
+    isResultFound = false
+    }
+    
+    @IBAction func clear_button(_ sender: UIButton) {
+        reset()
+        Current_text_field.text = "0"
+}
+    
+    
+    @IBAction func find_percent(_ sender: UIButton) {
+        guard let first = Int(firstNumber), let second = Int(secondNumber) else { return }
+        
+        switch operation{
+        case "+":
+            result = first + (first / 100 * second)
+        case "-":
+            result = first - (first / 100 * second)
+        case "/":
+                result = first / (first / 100 * second)
+        case "*":
+            result = first * (first / 100 * second)
+        default:
+            print("There is no such number and operations")
+        }
+        isResultFound = true
+        Current_text_field.text = "\(result)"
+    }
 }
