@@ -229,7 +229,7 @@ class VC: UIViewController {
     
     
     @IBAction func find_percent(_ sender: UIButton) {
-        guard let first = Double(firstNumber), let second = Double(secondNumber) else { return }
+        guard let first = Float(firstNumber), let second = Float(secondNumber) else { return }
         
         switch operation{
         case "+":
