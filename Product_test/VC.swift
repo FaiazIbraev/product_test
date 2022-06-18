@@ -11,28 +11,21 @@ class VC: UIViewController {
 
     @IBOutlet var Result_label: UIView!
     
-    
-    
-    
     var firstNumber: String = ""
     var operation: String = ""
     var secondNumber: String = ""
-    var result: Int = 0
+    var result: Float = 0
     var isResultFound: Bool = false
     
     @IBOutlet weak var Current_text_field: UITextField!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.green
         
-        Result_label.backgroundColor = UIColor.darkGray
+        Result_label.backgroundColor = UIColor.black
         Result_label.layer.cornerRadius = 50
         Result_label.layer.masksToBounds = true
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -55,6 +48,7 @@ class VC: UIViewController {
             print("There is no such operation")
         }
     }
+    
     
     @IBAction func numberActions(_ sender: UIButton) {
         
@@ -144,6 +138,14 @@ class VC: UIViewController {
                 secondNumber += "9"
                 Current_text_field.text = secondNumber
             }
+        case 50:
+            if operation.isEmpty{
+                firstNumber += "."
+                Current_text_field.text = firstNumber
+            } else{
+                secondNumber += "."
+                Current_text_field.text = secondNumber
+            }
         default:
             print("There is no such number")
         }
@@ -154,20 +156,20 @@ class VC: UIViewController {
     
     @IBAction func Calculate_result(_ sender: UIButton) {
         
-        guard let first = Int(firstNumber), let second = Int(secondNumber) else { return }
+        guard let first = Float(firstNumber), let second = Float(secondNumber) else { return }
         
         switch operation{
         case "+":
-            result = first + second
+            result = Float(first + second)
             firstNumber = "\(result)"
         case "-":
-            result = first - second
+            result = Float(first - second)
             firstNumber = "\(result)"
         case "/":
-                result = first / second
+            result = Float(first / second)
                 firstNumber = "\(result)"
         case "*":
-            result = first * second
+            result = Float(first * second)
             firstNumber = "\(result)"
         default:
             print("There is no such number and operations")
@@ -227,17 +229,17 @@ class VC: UIViewController {
     
     
     @IBAction func find_percent(_ sender: UIButton) {
-        guard let first = Int(firstNumber), let second = Int(secondNumber) else { return }
+        guard let first = Double(firstNumber), let second = Double(secondNumber) else { return }
         
         switch operation{
         case "+":
-            result = first + (first / 100 * second)
+            result = Float(first + (first / 100 * second))
         case "-":
-            result = first - (first / 100 * second)
+            result = Float(first - (first / 100 * second))
         case "/":
-                result = first / (first / 100 * second)
+            result = Float(first / (first / 100 * second))
         case "*":
-            result = first * (first / 100 * second)
+            result = Float(first * (first / 100 * second))
         default:
             print("There is no such number and operations")
         }
